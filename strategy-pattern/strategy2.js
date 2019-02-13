@@ -4,7 +4,6 @@ class StrategyManager {
   }
   addStrategy(strategy) {
     this._strategies = [...this._strategies, strategy];
-    /*     this._strategies.push({ name, handler }); */
   }
   getStrategy(name) {
     return this._strategies.find(strategy => strategy._name === name);
