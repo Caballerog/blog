@@ -1,3 +1,7 @@
 demeter/node_modules/
 adapter-pattern/node_modules/
+command-pattern/node_modules
 facade-pattern/node_modules/
+iterator-pattern/node_modules/
+computer-algorithms/node_modules/
+understanding-this-in-js/node_modules/
