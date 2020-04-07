@@ -3,5 +3,10 @@ adapter-pattern/node_modules/
 command-pattern/node_modules
 facade-pattern/node_modules/
 iterator-pattern/node_modules/
+iterators-javascript/node_modules/
+decorator-pattern/node_modules/
 computer-algorithms/node_modules/
+understanding-this-in-js/node_modules/
+null-object-pattern/node_modules/
+template-method-pattern/node_modules/
 understanding-this-in-js/node_modules/
