@@ -1,0 +1,24 @@
+{
+  "name": "refactoring-caesar",
+  "version": "0.1.0",
+  "description": "",
+  "main": "refactoring-caesar-original.js",
+  "scripts": {
+    "original": "node refactoring-caesar-original",
+    "step1": "node refactoring-caesar-step1",
+    "step2": "node refactoring-caesar-step2",
+    "step3": "node refactoring-caesar-step3",
+    "step4": "node refactoring-caesar-step4",
+    "step5": "node refactoring-caesar-step5",
+    "step6": "node refactoring-caesar-step6",
+    "step7": "node refactoring-caesar-step7",
+    "step8": "node refactoring-caesar-step8"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "ts-node": "^8.8.1",
+    "typescript": "^3.8.3"
+  }
+}
