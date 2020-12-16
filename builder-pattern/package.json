@@ -1,0 +1,22 @@
+{
+  "name": "adapter-pattern",
+  "version": "0.0.1",
+  "description": "",
+  "scripts": {
+    "example1": "nodemon --config nodemon-example1.json",
+    "example2": "nodemon --config nodemon-example2.json",
+    "example3": "nodemon --config nodemon-example3.json",
+    "example4": "nodemon --config nodemon-example4.json"
+  },
+  "keywords": [
+    "builder-pattern",
+    "clean-code"
+  ],
+  "author": "Carlos Caballero",
+  "license": "MIT",
+  "devDependencies": {
+    "nodemon": "^1.19.4",
+    "ts-node": "^9.1.1",
+    "typescript": "^3.9.7"
+  }
+}
