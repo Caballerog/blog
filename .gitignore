@@ -1,6 +1,7 @@
 demeter/node_modules/
 adapter-pattern/node_modules/
 builder-pattern/node_modules/
+factory-method-pattern/node_modules/
 command-pattern/node_modules
 facade-pattern/node_modules/
 iterator-pattern/node_modules/
