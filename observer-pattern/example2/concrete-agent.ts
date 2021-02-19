@@ -33,7 +33,7 @@ export class ConcreteAgent implements Agent {
     }
   }
 
-  public bidUp(auctioneer, bid): void {
+  public bidUp(auctioneer: Auctioneer, bid: number): void {
     console.log("Agent: I'm doing something important.");
     const isExist = this.auctioneers.includes(auctioneer);
     if (!isExist) {
