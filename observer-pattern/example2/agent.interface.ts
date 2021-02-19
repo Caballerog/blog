@@ -1,5 +1,4 @@
 import { Auctioneer } from "./auctioneer.interface";
-import { Product } from "./product.model";
 
 export interface Agent {
   subscribe(auctioneer: Auctioneer): void;
