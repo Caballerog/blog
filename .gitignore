@@ -3,6 +3,7 @@ abstract-factory-pattern/node_modules/
 builder-pattern/node_modules/
 command-pattern/node_modules
 computer-algorithms/node_modules/
+chain-responsibility-pattern/node_modules/
 decorator-pattern/node_modules/
 demeter/node_modules/
 factory-method-pattern/node_modules/
