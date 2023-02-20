@@ -1,0 +1,75 @@
+@startuml
+
+skinparam titleBorderRoundCorner 15
+skinparam titleBorderThickness 2
+skinparam titleBorderColor blue
+
+title State Pattern - Problem to solve
+
+"Client/Context" -[dashed]-> State : "<<use>>"
+"Client/Context" -[dashed]-> Freeza : "<<use>>"
+Freeza -[dashed]> State : "<<use>>"
+
+enum State {
+    TRANSFORMATION1
+    TRANSFORMATION2
+    TRANSFORMATION3
+    TRANSFORMATION4
+    GOLDEN_FREEZER
+}
+class Client/Context {
+    state: State
+    --
+    + request(operation: string)
+}
+
+class Freeza {
+    - power: number;
+    - energy: number;
+    - state: State;
+    --
+    + constructor(state: State)
+    + isAlive(): boolean
+    + transitionTo(state: State): void
+    + attack(): void 
+    + defend(attack: number):void       
+}
+
+note left of Freeza::transitionTo
+        this.state = state;
+        switch(state) {
+            case STATE.TRANSFORMATION1: ... break;
+            case STATE.TRANSFORMATION2: ... break;
+            case STATE.TRANSFORMATION3: ... break;
+            case STATE.TRANSFORMATION4: ... break;
+            case STATE.GOLDEN_FREEZER: ... break;
+        }
+end note
+
+
+note left of Freeza::attack 
+    let attackToEnemy, restoreEnergy;
+    switch(this.state){
+        case STATE.TRANSFORMATION1: ... break;
+        case STATE.TRANSFORMATION2: ... break;
+        case STATE.TRANSFORMATION3: ... break;
+        case STATE.TRANSFORMATION4: ... break;
+        case STATE.GOLDEN_FREEZER: ... break;
+    }
+end note
+
+note left of Freeza::defend 
+     let attackFromEnemy;
+
+    switch(this.state){
+        case STATE.TRANSFORMATION1: ... break;
+        case STATE.TRANSFORMATION2: ... break;
+        case STATE.TRANSFORMATION3: ... break;
+        case STATE.TRANSFORMATION4: ... break;
+        case STATE.GOLDEN_FREEZER: ... break;
+    }
+}
+end note
+
+
+@enduml

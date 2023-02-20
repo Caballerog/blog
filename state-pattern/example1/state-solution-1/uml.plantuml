@@ -1,0 +1,43 @@
+@startuml
+
+skinparam titleBorderRoundCorner 15
+skinparam titleBorderThickness 2
+skinparam titleBorderColor blue
+
+title State Pattern 
+
+Client -[dashed]-> Context : "<<use>>" 
+ConcreteStateA <-> ConcreteStateB
+
+abstract class State {
+    # context: Context
+
+    + abstract handle1(): void;
+    + abstract handle2(): void;
+}
+
+
+class ConcreteStateA extends State {
+    + handle1(): void 
+    + handle2(): void 
+}
+class ConcreteStateB extends State {
+    + handle1(): void 
+    + handle2(): void 
+}
+
+class Context {
+    - state: State
+    --
+    + constructor(state: State)
+    + request1(): void
+    + request2(): void
+    + transitionTo(state: State): void
+
+}
+
+
+
+Context o-> State
+
+@enduml

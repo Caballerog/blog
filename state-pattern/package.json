@@ -1,0 +1,22 @@
+{
+  "name": "state-pattern",
+  "version": "0.0.1",
+  "description": "",
+  "scripts": {
+    "example1-problem": "nodemon --config nodemon-example1-problem.json",
+    "example1-state-solution-1": "nodemon --config nodemon-example1-state-solution-1.json",
+    "example2-problem": "nodemon --config nodemon-example2-problem.json",
+    "example2-state-solution-1": "nodemon --config nodemon-example2-state-solution-1.json"
+  },
+  "keywords": [
+    "state-pattern",
+    "clean-code"
+  ],
+  "author": "Carlos Caballero",
+  "license": "MIT",
+  "devDependencies": {
+    "nodemon": "^1.19.4",
+    "ts-node": "^10.9.1",
+    "typescript": "^3.9.10"
+  }
+}

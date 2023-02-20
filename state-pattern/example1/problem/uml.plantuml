@@ -1,0 +1,41 @@
+@startuml
+
+skinparam titleBorderRoundCorner 15
+skinparam titleBorderThickness 2
+skinparam titleBorderColor blue
+
+title State Pattern - Problem to solve
+
+enum State {
+    stateA
+    stateB
+}
+class Context {
+    state: State
+    --
+    + request(operation: string)
+
+}
+
+note left of Context::request
+        switch (this.state){
+            case State.stateA:
+                if(operation === 'request1'){
+                    ...
+                    this.state = State.stateB;
+                    ...
+                }else { ... }
+                break
+            case State.stateB:
+                if(operation === 'request1'){ ... }
+                else{
+                    ...
+                    this.state = State.stateA;
+                    ...
+                }
+        }
+end note
+
+Context -> State
+
+@enduml

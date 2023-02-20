@@ -1,0 +1,78 @@
+@startuml
+
+skinparam titleBorderRoundCorner 15
+skinparam titleBorderThickness 2
+skinparam titleBorderColor blue
+
+title State Pattern 
+
+"Client/Context" -[dashed]> Freeza : "<<use>>" 
+"Client/Context" -[dashed]-> Transformation1 : "<<use>>" 
+
+Transformation1 <-> Transformation2
+Transformation2 <-> Transformation3
+Transformation3 <-> Transformation4
+Transformation4 <-> GoldenFreezer
+
+Freeza o-> State
+
+
+abstract class State {
+    - {abstract} power: number
+    - {abstract} energy: number
+    # freeza: Freeza
+    --
+    + setFreeza(freeza: Freeza): void
+    + getEnergy(): number
+    + {abstract} attack(): void;
+    + {abstract} defend(value: number): void 
+
+}
+
+class Freeza {
+    - state: State;
+    --
+    + constructor(state: State)
+    + isAlive(): boolean 
+    + transitionTo(state: State): void
+    + attack(): void 
+    + defend(value: number): void 
+}
+
+class Transformation1 extends State {
+    - power = 530000
+    - energy = 5
+    + attack(): void 
+    + defend(value: number): void 
+}
+
+class Transformation2 extends State {
+    - power = 106000
+    - energy = 10
+    + attack(): void 
+    + defend(value: number): void 
+}
+
+class Transformation3 extends State {
+    - power = 212000
+    - energy = 15
+    + attack(): void 
+    + defend(value: number): void 
+}
+
+class Transformation4 extends State {
+    - power = 406000
+    - energy = 20
+    + attack(): void 
+    + defend(value: number): void 
+}
+
+class GoldenFreezer extends State {
+    - power = 812000
+    - energy = 30
+    + attack(): void 
+    + defend(value: number): void 
+}
+
+
+@enduml
