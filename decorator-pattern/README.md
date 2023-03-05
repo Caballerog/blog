@@ -1,3 +1,3 @@
-# Design Patterns: Facade (Design Patterns series)
+# Design Patterns: Decorator (Design Patterns series)
 
-**To read an explanation of this design pattern, check out the [blogpost](https://www.carloscaballero.io/design-patterns-facade/).**
+**To read an explanation of this design pattern, check out the [blogpost](https://www.carloscaballero.io/design-patterns-decorator/).**
