@@ -4,6 +4,15 @@ skinparam titleBorderRoundCorner 15
 skinparam titleBorderThickness 2
 skinparam titleBorderColor blue
 
+
+header
+<font color=red>Warning:</font>
+Educational Purposes
+endheader
+
+center footer Carlos Caballero ([[https://www.carloscaballero.io https://www.carloscaballero.io]])
+
+
 title State Pattern - Problem to solve
 
 enum State {

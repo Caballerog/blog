@@ -7,8 +7,8 @@ const freeza = new Freeza(new Transformation1()); // Initial State
 (async () => {
   while(freeza.isAlive()){
     freeza.attack();
-    await sleep(1000);
+    await sleep(10);
     freeza.defend(10);
-    await sleep(1000);
+    await sleep(10);
   } 
-})()
+})();

@@ -6,12 +6,22 @@ skinparam titleBorderColor blue
 
 title State Pattern 
 
+
+header
+<font color=red>Warning:</font>
+Educational Purposes
+endheader
+
+center footer Carlos Caballero ([[https://www.carloscaballero.io https://www.carloscaballero.io]])
+
+
 Client -[dashed]-> Context : "<<use>>" 
 ConcreteStateA <-> ConcreteStateB
 
 abstract class State {
     # context: Context
 
+    + setContext(context: Context): void
     + abstract handle1(): void;
     + abstract handle2(): void;
 }

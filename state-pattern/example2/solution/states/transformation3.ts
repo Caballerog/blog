@@ -16,7 +16,7 @@ export class Transformation3 extends State {
     }
 
     public defend(attack: number) {
-        const attackFromEnemy = Math.round(attack * (Math.random()));
+        const attackFromEnemy = Math.round(attack * (Math.random()/5));
         this.energy = this.energy - attackFromEnemy;
         
         console.log('Freeza defend in form 3');

@@ -6,8 +6,17 @@ skinparam titleBorderColor blue
 
 title State Pattern - Problem to solve
 
-"Client/Context" -[dashed]-> State : "<<use>>"
-"Client/Context" -[dashed]-> Freeza : "<<use>>"
+header
+<font color=red>Warning:</font>
+Educational Purposes
+endheader
+
+center footer Carlos Caballero ([[https://www.carloscaballero.io https://www.carloscaballero.io]])
+
+
+
+"Client" -[dashed]-> State : "<<use>>"
+"Client" -[dashed]-> Freeza : "<<use>>"
 Freeza -[dashed]> State : "<<use>>"
 
 enum State {
@@ -17,7 +26,7 @@ enum State {
     TRANSFORMATION4
     GOLDEN_FREEZER
 }
-class Client/Context {
+class Client {
     state: State
     --
     + request(operation: string)

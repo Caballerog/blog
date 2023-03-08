@@ -1,8 +1,8 @@
 import { Freeza } from "./freeza";
-import { STATE } from "./state.enum";
+import { State } from "./state.enum";
 
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
-const freeza = new Freeza(STATE.TRANSFORMATION1); // Initial State
+const freeza = new Freeza(State.TRANSFORMATION1); // Initial State
 
 (async () => {
   while(freeza.isAlive()){
@@ -11,4 +11,4 @@ const freeza = new Freeza(STATE.TRANSFORMATION1); // Initial State
     freeza.defend(10);
     await sleep(1000);
   } 
-})()
+})();

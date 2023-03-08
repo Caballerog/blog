@@ -1,4 +1,4 @@
-export enum STATE {
+export enum State {
     TRANSFORMATION1 = 'transformation1',
     TRANSFORMATION2 = 'transformation2',
     TRANSFORMATION3 = 'transformation3',

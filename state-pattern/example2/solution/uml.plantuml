@@ -6,8 +6,17 @@ skinparam titleBorderColor blue
 
 title State Pattern 
 
-"Client/Context" -[dashed]> Freeza : "<<use>>" 
-"Client/Context" -[dashed]-> Transformation1 : "<<use>>" 
+header
+<font color=red>Warning:</font>
+Educational Purposes
+endheader
+
+center footer Carlos Caballero ([[https://www.carloscaballero.io https://www.carloscaballero.io]])
+
+
+
+"Client" -[dashed]> Freeza : "<<use>>" 
+"Client" -[dashed]-> Transformation1 : "<<use>>" 
 
 Transformation1 <-> Transformation2
 Transformation2 <-> Transformation3

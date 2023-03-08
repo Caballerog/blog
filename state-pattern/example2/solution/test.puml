@@ -1,0 +1,50 @@
+@startuml
+class Freeza {
+    -state: State
+    +isAlive(): boolean
+    +transitionTo(state: State): void
+    +attack(): void
+    +defend(value: number): void
+}
+abstract class State {
+    +{abstract} power: number
+    +{abstract} energy: number
+    #freeza: Freeza
+    +setFreeza(freeza: Freeza): void
+    +getEnergy(): number
+    +{abstract} attack(): void
+    +{abstract} defend(value: number): void
+}
+class Transformation1 extends State {
+    +power: number
+    +energy: number
+    +attack(): void
+    +defend(attack: number): void
+}
+class Transformation2 extends State {
+    +power: number
+    +energy: number
+    +attack(): void
+    +defend(attack: number): void
+}
+class Transformation3 extends State {
+    +power: number
+    +energy: number
+    +attack(): void
+    +defend(attack: number): void
+}
+class Transformation4 extends State {
+    +power: number
+    +energy: number
+    +attack(): void
+    +defend(attack: number): void
+}
+class GoldenFreezer extends State {
+    +power: number
+    +energy: number
+    +attack(): void
+    +defend(attack: number): void
+}
+Freeza --> "1" State
+State --> "1" Freeza
+@enduml

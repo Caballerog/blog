@@ -20,7 +20,6 @@ export class Freeza {
         this.state.setFreeza(this);
     }
 
-
     public attack(): void {
         this.state.attack();
     }

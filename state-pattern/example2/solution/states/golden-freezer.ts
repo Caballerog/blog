@@ -2,7 +2,7 @@ import { State } from "../state";
 import { Transformation4 } from "./transformation4";
 
 export class GoldenFreezer extends State {
-    power = 212000;
+    power = 812000;
     energy = 30;
     
     public attack() {
@@ -15,7 +15,7 @@ export class GoldenFreezer extends State {
     }
 
     public defend(attack: number) {
-        const attackFromEnemy = Math.round(attack * (Math.random()));
+        const attackFromEnemy = Math.round(attack * (Math.random()/5));
         this.energy = this.energy - attackFromEnemy;
         
         console.log('Freeza defend in Golden Freezer');

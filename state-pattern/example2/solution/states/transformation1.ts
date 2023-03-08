@@ -1,6 +1,5 @@
 import { State } from "../state";
 import { Transformation2 } from "./transformation2";
-import { Transformation3 } from "./transformation3";
 
 export class Transformation1 extends State {
     power = 530000;
@@ -16,7 +15,7 @@ export class Transformation1 extends State {
     }
 
     public defend(attack: number): void {
-        const attackFromEnemy = Math.round(attack * (Math.random()));
+        const attackFromEnemy = Math.round(attack * (Math.random()/7));
         this.energy = this.energy - attackFromEnemy;
 
         console.log('Freeza defend in form 1');
@@ -26,6 +25,4 @@ export class Transformation1 extends State {
             this.freeza.transitionTo(new Transformation2());
         }
     }
-
-
 }
