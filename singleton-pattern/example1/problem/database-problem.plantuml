@@ -9,20 +9,20 @@ interface ConnectionConfiguration {
 
 class DatabaseConnection {
   - configuration: ConnectionConfiguration 
-  + getUniqueIdentificator() 
+  + getUniqueIdentificator: number 
 }
 
 class Client2 {
   - databaseConnection: DatabaseConnection;
   + constructor()
-  + getUniqueIdentificator()
+  + getUniqueIdentificator(): number
 }
 
 
 class Client1 {
   - databaseConnection: DatabaseConnection;
   + constructor()
-  + getUniqueIdentificator()
+  + getUniqueIdentificator(): number
 }
 
 
