@@ -7,10 +7,11 @@ interface Hero {
  abstract class HeroBase {
   #hero: Hero
   # _getUniqueIdentificator: number
-
-  + constructor(hero: Hero)
+ 
+  # constructor(hero: Hero)
   + toString(): string
   + getUniqueIdentificator()
+  {abstract}{static} #getHero(): HeroBase
 }
 
 class Batman extends HeroBase {
