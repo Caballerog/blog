@@ -1,0 +1,24 @@
+@startuml
+class Client {}
+class WordsCollection {
+  -items: string[] = []
+
+  +getItems(): string[]
+  +addItem(item: string): void
+}
+
+Client .> WordsCollection : "<<use>>"
+
+note left of Client
+
+{
+  ...
+  items = collection.getItems();
+  for(...) {
+    console.log(items[i]);
+  }
+  ...
+}
+end note
+
+@enduml
