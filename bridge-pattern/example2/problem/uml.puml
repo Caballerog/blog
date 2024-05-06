@@ -1,0 +1,43 @@
+
+@startuml
+skinparam titleBorderRoundCorner 15
+skinparam titleBorderThickness 2
+skinparam titleBorderColor blue
+
+
+header
+<font color=red>Warning:</font>
+Educational Purposes
+endheader
+
+center footer Carlos Caballero ([[https://www.carloscaballero.io https://www.carloscaballero.io]])
+
+
+title Bridge Pattern
+
+class DesktopMessaging {
+    +sendMessageFromDesktop(message: string): void;
+    +receiveMessageOnDesktop(): string 
+}
+
+class MobileMessaging {
+    +sendMessageFromMobile(message: string): void;
+    +receiveMessageOnMobile(): string 
+}
+
+class Client {}
+
+DesktopMessaging <.. Client: "<<use>>"
+MobileMessaging <.. Client: "<<use>>"
+
+note left of Client
+const mobileMessaging = new MobileMessaging();
+mobileMessaging.sendMessageFromMobile("Hello from Mobile!");
+console.log(mobileMessaging.receiveMessageOnMobile());
+
+const desktopMessaging = new DesktopMessaging();
+desktopMessaging.sendMessageFromDesktop("Hello from Desktop!");
+console.log(desktopMessaging.receiveMessageOnDesktop());
+
+endnote
+@enduml

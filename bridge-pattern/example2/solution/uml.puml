@@ -1,0 +1,53 @@
+
+@startuml
+skinparam titleBorderRoundCorner 15
+skinparam titleBorderThickness 2
+skinparam titleBorderColor blue
+
+
+header
+<font color=red>Warning:</font>
+Educational Purposes
+endheader
+
+center footer Carlos Caballero ([[https://www.carloscaballero.io https://www.carloscaballero.io]])
+
+
+title Bridge Pattern
+
+class AdvancedMessaging extends MessagingService {
+    +send(message: string): void;
+    +receive(): string;
+}
+
+
+class DesktopSender implements MessageSender {
+    +sendMessage(message: string): void;
+    +receiveMessage(): string;
+}
+
+interface MessageSender {
+    +sendMessage(message: string): void;
+    +receiveMessage(): string;
+}
+
+abstract class MessagingService {
+    +protected sender: MessageSender;
+
+ 
+    +abstract send(message: string): void;
+    +abstract receive(): string;
+}
+
+
+class MobileSender implements MessageSender {
+    +sendMessage(message: string): void;
+    +receiveMessage(): string;
+}
+
+MessagingService o-> MessageSender : "<<includes>>"
+
+MessageSender <. Client  : "<<use>>"
+AdvancedMessaging <.. Client : "<<use>>"
+
+@enduml

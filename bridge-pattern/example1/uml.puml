@@ -1,0 +1,43 @@
+@startuml
+
+
+skinparam titleBorderRoundCorner 15
+skinparam titleBorderThickness 2
+skinparam titleBorderColor blue
+
+
+header
+<font color=red>Warning:</font>
+Educational Purposes
+endheader
+
+center footer Carlos Caballero ([[https://www.carloscaballero.io https://www.carloscaballero.io]])
+
+
+title Bridge Pattern
+
+interface Implementor {
+    +operationImplementation(): void
+}
+
+abstract class Abstraction {
+    -implementor: Implementor
+    {abstract} +operation(): void
+}
+
+class ConcreteImplementorA implements Implementor {
+    +operationImplementation(): void
+}
+
+class ConcreteImplementorB implements Implementor{
+    +operationImplementation(): void
+}
+
+class RefineAbstraction extends Abstraction {
+    +operation(): void
+}
+Abstraction o-> Implementor: "contains"
+
+
+
+@enduml
