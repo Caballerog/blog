@@ -1,0 +1,42 @@
+@startuml
+
+skinparam titleBorderRoundCorner 15
+skinparam titleBorderThickness 2
+skinparam titleBorderColor blue
+
+
+header
+<font color=red>Warning:</font>
+Educational Purposes
+endheader
+
+center footer Carlos Caballero ([[https://www.carloscaballero.io https://www.carloscaballero.io]])
+
+
+title Iterator Pattern - Problem to solve
+
+class WordsCollection {
+    -items: string[]
+    +getItems(): string[]
+    +addItem(item: string): void
+}
+
+class Client {
+
+}
+
+note left of Client 
+{
+    ...
+    items = collection.getItems();
+    for(...){
+        console.log(items[i]);
+    }
+    ...
+}
+end note
+
+
+Client .> WordsCollection: "<<use>>"
+
+@enduml

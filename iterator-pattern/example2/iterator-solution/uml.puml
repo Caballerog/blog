@@ -1,0 +1,97 @@
+@startuml
+
+skinparam titleBorderRoundCorner 15
+skinparam titleBorderThickness 2
+skinparam titleBorderColor blue
+
+
+header
+<font color=red>Warning:</font>
+Educational Purposes
+endheader
+
+center footer Carlos Caballero ([[https://www.carloscaballero.io https://www.carloscaballero.io]])
+
+
+title Iterator Pattern
+
+
+class Profile{
+    -_name: string
+    -_email: string
+    -_contacts: Map<string, string[]>
+    +email: string
+    +name: string
+    +getContactsByType(contactType: string): string[]
+}
+interface ProfileIterator {
+    +hasNext(): boolean
+    +getNext(): Profile
+    +reset(): void
+}
+class DevToIterator implements ProfileIterator {
+    -devTo: DevTo
+    -type: string
+    -email: string
+    -currentPosition: number
+    -emails: string[]
+    -contacts: Profile[]
+    -lazyLoad(): void
+    +hasNext(): boolean
+    +getNext(): Profile
+    +reset(): void
+}
+
+class DevTo {
+    -contacts: Profile[]
+    +requestContactInfoFromDevToInAPI(profileEmail: string): Profile
+    +requestRelatedContactsFromDevToInAPI(profileEmail: string, contactType: string): string[]
+    -findContact(profileEmail: string): Profile
+    +createFriendsIterator(profileEmail: string): ProfileIterator
+    +createCoworkersIterator(profileEmail: string): ProfileIterator
+}
+class Medium {
+    -contacts: Map<string, Profile>
+    +requestContactInfoFromMediumInAPI(profileEmail: string): Profile
+    +requestRelatedContactsFromMediumInAPI(profileEmail: string, contactType: string): string[]
+    -findContact(profileEmail: string): Profile
+    +createFriendsIterator(profileEmail: string): ProfileIterator
+    +createCoworkersIterator(profileEmail: string): ProfileIterator
+}
+
+class MediumIterator implements ProfileIterator {
+    -medium: Medium
+    -type: string
+    -email: string
+    -currentPosition: number
+    -emails: string[]
+    -contacts: Profile[]
+    -lazyLoad(): void
+    +hasNext(): boolean
+    +getNext(): Profile
+    +reset(): void
+}
+
+class SocialSpammer {
+    +network: SocialNetwork
+    +sendSpamToFriends(profileEmail: string, message: string): void
+    +sendSpamToCoworkers(profileEmail: string, message: string): void
+    -sendMessage(email: string, message: string): void
+}
+
+interface SocialNetwork {
+    +createFriendsIterator(profileEmail: string): ProfileIterator
+    +createCoworkersIterator(profileEmail: string): ProfileIterator
+}
+Profile .> IProfile
+ProfileIterator <. Profile : <<use>>
+DevToIterator ..> DevTo : <<use>>
+DevToIterator <.. DevTo: <<create>>
+MediumIterator <.. Medium: <<create>>
+MediumIterator ..> Medium : <<use>>
+SocialNetwork -o SocialSpammer 
+SocialSpammer <.  Client: <<use>>
+DevTo ..> SocialNetwork
+Medium  ..> SocialNetwork
+
+@enduml
