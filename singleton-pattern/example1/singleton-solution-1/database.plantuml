@@ -1,0 +1,37 @@
+@startuml
+interface ConnectionConfiguration {
+  + host: string;
+  + user: string;
+  + pass: string;
+  + name: string;
+}
+
+class DatabaseConnection {
+  - {static} instance: DatabaseConnection;
+  - configuration: ConnectionConfiguration;
+  + getUniqueIdentificator: number;
+  - constructor()
+  + {static} getDatabaseConnection(): DatabaseConnection
+}
+
+class Client1 {
+  - databaseConnection: DatabaseConnection;
+  + constructor();
+  + getUniqueIdentificatorConnection(): number
+}
+
+
+class Client2 {
+  - databaseConnection: DatabaseConnection;
+  + constructor()
+  + getUniqueIdentificatorConnection(): number;
+}
+
+
+DatabaseConnection .> ConnectionConfiguration : "<<use>>"
+DatabaseConnection --o Client1
+DatabaseConnection --o Client2
+
+Client1 <-. Context : "<<use>>"
+Client2 <-. Context : "<<use>>"
+@endum

@@ -1,0 +1,56 @@
+@startuml
+interface Hero {
+  + name: string
+  + city: string
+}
+
+ abstract class HeroBase {
+  #hero: Hero
+  # _getUniqueIdentificator: number
+ 
+  # constructor(hero: Hero)
+  + toString(): string
+  + getUniqueIdentificator()
+  {abstract}{static} #getHero(): HeroBase
+}
+
+class Batman extends HeroBase {
+  - {static} instance: Batman;
+
+  - constructor()
+  + {static} getHero(): Batman
+}
+
+class Spiderman extends HeroBase {
+  - {static} instance: Spiderman;
+
+  - constructor()
+  + {static} getHero(): Spiderman
+}
+
+class Client2 {
+  - batman: Batman;
+  - spiderman: Spiderman
+  + constructor()
+  + showHero(Hero): string
+}
+
+
+
+class Client1 {
+  - batman: Batman;
+  - spiderman: Spiderman
+  + constructor()
+  + showHero(Hero): string
+}
+
+HeroBase .> Hero : "<<use>>"
+Batman --o Client1
+Spiderman --o Client1
+
+Batman --o Client2
+Spiderman --o Client2
+
+Client1 <-. Context : "<<use>>"
+Client2 <-. Context : "<<use>>"
+@enduml
