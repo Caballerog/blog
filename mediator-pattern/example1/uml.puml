@@ -1,0 +1,53 @@
+@startuml
+
+
+skinparam titleBorderRoundCorner 15
+skinparam titleBorderThickness 2
+skinparam titleBorderColor blue
+
+
+header
+<font color=red>Warning:</font>
+Educational Purposes
+endheader
+
+center footer Carlos Caballero ([[https://www.carloscaballero.io https://www.carloscaballero.io]])
+
+
+title Mediator Pattern
+
+interface Mediator {
+  +notify(sender: Colleague, event: string): void
+}
+
+class ConcreteMediator {
+  -colleague1: Colleague1
+  -colleague2: Colleague2
+  +notify(sender: Colleague, event: string): void
+}
+
+interface Colleague {
+  +setMediator(mediator: Mediator): void
+  +action(): void
+}
+
+class Colleague1 {
+  +setMediator(mediator: Mediator): void
+  +action(): void
+}
+
+class Colleague2{
+  +setMediator(mediator: Mediator): void
+  +action(): void
+}
+
+Mediator <. Colleague
+
+Colleague <.. Colleague2
+Colleague <.. Colleague1
+
+Mediator <-- ConcreteMediator
+ConcreteMediator -> Colleague2 : coordinates
+ConcreteMediator -> Colleague1 : coordinates
+
+@enduml

@@ -1,0 +1,63 @@
+
+@startuml
+skinparam titleBorderRoundCorner 15
+skinparam titleBorderThickness 2
+skinparam titleBorderColor blue
+
+
+header
+<font color=red>Warning:</font>
+Educational Purposes
+endheader
+
+center footer Carlos Caballero ([[https://www.carloscaballero.io https://www.carloscaballero.io]])
+
+
+title Mediator Pattern
+
+interface IoTMediator {
+  sendMessage(sender: IoTDevice, receiverId: string, message: string): void;
+  sendMeasurement(sender: IoTDevice, receiverId: string, data: any): void;
+}
+
+
+class ConcreteIoTMediator  {
+  - devices: Map<string, IoTDevice> = new Map()
+  + registerDevice(device: IoTDevice): void
+  + sendMessage(sender: IoTDevice, receiverId: string, message: string): void
+  + sendMeasurement(sender: IoTDevice, receiverId: string, data: any): void
+}
+
+
+class IoTDevice {
+  - id: string
+  - mediator: IoTMediator
+
+  + constructor(id: string, mediator: IoTMediator)
+  + sendMessage(receiverId: string, message: string): void
+  + sendMeasurement(receiverId: string, data: any): void
+  + receiveMessage(sender: IoTDevice, message: string): void
+  + receiveMeasurement(sender: IoTDevice, data: any): void
+}
+
+class Sensor {
+  + constructor(id: string, mediator: IoTMediator)
+}
+
+
+class Actuator {
+  + constructor(id: string, mediator: IoTMediator)
+  + receiveControlSignal(sender: IoTDevice, signal: string): void
+}
+
+
+IoTMediator <. IoTDevice 
+
+IoTDevice <|-- Sensor
+IoTDevice <|-- Actuator
+IoTMediator <|.. ConcreteIoTMediator
+
+ConcreteIoTMediator -> Sensor: "<<coordinates>>"
+ConcreteIoTMediator --> Actuator: "<<coordinates>>"
+
+@enduml
