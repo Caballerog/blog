@@ -1,6 +1,6 @@
 import { IoTMediator } from "./iot-mediator";
 
-export class IoTDevice {
+export abstract class IoTDevice {
     constructor(public id: string, protected mediator: IoTMediator) {
       mediator.registerDevice(this);
     }
@@ -16,15 +16,14 @@ export class IoTDevice {
     }
   
     // Method to receive a message from another device
-    receiveMessage(sender: IoTDevice, message: string): void {
-      console.log(`[${this.id}] Message received from ${sender.id}: ${message}`);
-      // Logic to process the received message
+    receiveMessage(senderId: string, message: string): void {
+      this.mediator.receiveMessage(this, senderId, message);
     }
   
     // Method to receive measurement data from another device
-    receiveMeasurement(sender: IoTDevice, data: any): void {
-      console.log(`[${this.id}] Measurement data received from ${sender.id}: ${JSON.stringify(data)}`);
-      // Logic to process the received measurement data
+    receiveMeasurement(senderId: string, data: any): void {
+      this.mediator.receiveMeasurement(this, senderId, data);
+        // Logic to process the received measurement data
     }
   }
   

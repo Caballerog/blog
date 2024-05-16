@@ -26,11 +26,10 @@ abstract class IoTDevice {
     sendMeasurement(receiver: IoTDevice, data: any): void {
       console.log(`[${this.id}] Sending measurement data to ${receiver.id}: ${JSON.stringify(data)}`);
       // Logic to send the data to the receiver
-      if (receiver instanceof Actuator) {
-        (receiver as Actuator).receiveMeasurement(this, data);
-      } else {
-        console.log("Error: Measurement data can only be sent to an Actuator.");
-      }
+      if (!(receiver instanceof Actuator)) {
+        return console.log("Error: Measurement data can only be sent to an Actuator.");
+      } 
+      receiver.receiveMeasurement(this, data);
     }
   }
   

@@ -12,5 +12,7 @@ import { Sensor } from "./sensor";
   // Example interaction between devices
   sensor1.sendMessage("Sensor2", "How are you?");
   sensor2.sendMeasurement("Actuator1", { temperature: 25, humidity: 60 });
-  actuator1.receiveControlSignal(sensor2, "Turn off");
+  actuator1.receiveControlSignal("Sensor2", "Turn off");
+
+  sensor1.sendMessage("Invalid-sensor", "How are you?");
   

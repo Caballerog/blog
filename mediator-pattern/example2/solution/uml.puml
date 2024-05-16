@@ -16,28 +16,36 @@ center footer Carlos Caballero ([[https://www.carloscaballero.io https://www.car
 title Mediator Pattern
 
 interface IoTMediator {
-  sendMessage(sender: IoTDevice, receiverId: string, message: string): void;
-  sendMeasurement(sender: IoTDevice, receiverId: string, data: any): void;
+  + registerDevice(device: IoTDevice): void;
+  + sendMessage(sender: IoTDevice, receiverId: string, message: string): void;
+  + sendMeasurement(sender: IoTDevice, receiverId: string, data: any): void;
+  + receiveMessage(receiver: IoTDevice, senderId: string, message: string): void;
+  + receiveMeasurement(receiver: IoTDevice, senderId: string, data: any): void;
+  + receiveControlSignal(receiver: IoTDevice, senderId: string, signal: string): void;
 }
 
 
 class ConcreteIoTMediator  {
-  - devices: Map<string, IoTDevice> = new Map()
-  + registerDevice(device: IoTDevice): void
-  + sendMessage(sender: IoTDevice, receiverId: string, message: string): void
-  + sendMeasurement(sender: IoTDevice, receiverId: string, data: any): void
+  - devices: Map<string, IoTDevice>;
+  + registerDevice(device: IoTDevice): void;
+  + sendMessage(sender: IoTDevice, receiverId: string, message: string): void;
+  + sendMeasurement(sender: IoTDevice, receiverId: string, data: any): void;
+  + receiveMessage(receiver: IoTDevice, senderId: string, message: string): void;
+  + receiveMeasurement(receiver: IoTDevice, senderId: string, data: any): void;
+  + receiveControlSignal(receiver: IoTDevice, senderId: string, signal: string): void;
+  - findOrError(deviceId: string): IoTDevice;
 }
 
 
-class IoTDevice {
-  - id: string
-  - mediator: IoTMediator
+abstract class IoTDevice {
+  + id: string
+  # mediator: IoTMediator
 
   + constructor(id: string, mediator: IoTMediator)
   + sendMessage(receiverId: string, message: string): void
   + sendMeasurement(receiverId: string, data: any): void
-  + receiveMessage(sender: IoTDevice, message: string): void
-  + receiveMeasurement(sender: IoTDevice, data: any): void
+  + receiveMessage(senderId: string, message: string): void
+  + receiveMeasurement(senderId: string, data: any): void
 }
 
 class Sensor {
@@ -47,7 +55,7 @@ class Sensor {
 
 class Actuator {
   + constructor(id: string, mediator: IoTMediator)
-  + receiveControlSignal(sender: IoTDevice, signal: string): void
+  + receiveControlSignal(senderId: string, signal: string): void
 }
 
 
@@ -59,5 +67,8 @@ IoTMediator <|.. ConcreteIoTMediator
 
 ConcreteIoTMediator -> Sensor: "<<coordinates>>"
 ConcreteIoTMediator --> Actuator: "<<coordinates>>"
+
+Sensor <.. Client : "<<use>>"
+Actuator <.. Client  : "<<use>>"
 
 @enduml

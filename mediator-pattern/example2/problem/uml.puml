@@ -46,5 +46,8 @@ IoTDevice <.. Sensor
 IoTDevice <.. Actuator
 Sensor <.. Client  : "<<use>>"
 Actuator <.. Client  : "<<use>>"
+
+Sensor <.> Actuator: "<<communicate>>"
 @enduml
+
 

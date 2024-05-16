@@ -7,8 +7,7 @@ export class Actuator extends IoTDevice {
     }
   
     // Method to receive a control signal from another device
-    receiveControlSignal(sender: IoTDevice, signal: string): void {
-      console.log(`[${this.id}] Receiving control signal from ${sender.id}: ${signal}`);
-      // Logic to process the received control signal
+    receiveControlSignal(senderId: string, signal: string): void {
+      this.mediator.receiveControlSignal(this, senderId, signal);
     }
   }
