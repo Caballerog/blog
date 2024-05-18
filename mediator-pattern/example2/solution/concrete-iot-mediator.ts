@@ -54,6 +54,5 @@ export class ConcreteIoTMediator implements IoTMediator {
       console.log(`[${receiver.id}] Receiving control signal from ${sender.id}: ${signal}`);
         // Logic to process the received control signal
       }
-
   }
   

@@ -14,14 +14,7 @@ abstract class IoTDevice {
       console.log(`[${this.id}] Message received from ${sender.id}: ${message}`);
       // Logic to process the received message
     }
-  }
-  
-  // Class to represent a sensor in the system
-  class Sensor extends IoTDevice {
-    constructor(id: string) {
-      super(id);
-    }
-  
+      
     // Method to send measurement data to another device
     sendMeasurement(receiver: IoTDevice, data: any): void {
       console.log(`[${this.id}] Sending measurement data to ${receiver.id}: ${JSON.stringify(data)}`);
@@ -31,6 +24,22 @@ abstract class IoTDevice {
       } 
       receiver.receiveMeasurement(this, data);
     }
+
+      
+    // Method to receive measurement data from a sensor
+    receiveMeasurement(sender: IoTDevice, data: any): void {
+      console.log(`[${this.id}] Measurement data received from ${sender.id}: ${JSON.stringify(data)}`);
+      // Logic to process the received measurement data
+    }
+  
+  }
+  
+  // Class to represent a sensor in the system
+  class Sensor extends IoTDevice {
+    constructor(id: string) {
+      super(id);
+    }
+
   }
   
   // Class to represent an actuator in the system
@@ -38,18 +47,11 @@ abstract class IoTDevice {
     constructor(id: string) {
       super(id);
     }
-  
-    // Method to receive measurement data from a sensor
-    receiveMeasurement(sender: IoTDevice, data: any): void {
-      console.log(`[${this.id}] Measurement data received from ${sender.id}: ${JSON.stringify(data)}`);
-      // Logic to process the received measurement data
-    }
-  
-    // Method to receive a control signal from another device
-    receiveControlSignal(sender: IoTDevice, signal: string): void {
-      console.log(`[${this.id}] Receiving control signal from ${sender.id}: ${signal}`);
-      // Logic to process the received control signal
-    }
+        // Method to receive a control signal from another device
+        receiveControlSignal(sender: IoTDevice, signal: string): void {
+          console.log(`[${this.id}] Receiving control signal from ${sender.id}: ${signal}`);
+          // Logic to process the received control signal
+        }
   }
   
   // Create IoT devices

@@ -7,5 +7,5 @@ export interface IoTMediator {
     receiveMessage(receiver: IoTDevice, senderId: string, message: string): void;
     receiveMeasurement(receiver: IoTDevice, senderId: string, data: any): void;
     receiveControlSignal(receiver: IoTDevice, senderId: string, signal: string): void;
-  }
+}
   

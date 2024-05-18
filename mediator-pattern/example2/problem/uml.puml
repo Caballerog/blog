@@ -18,19 +18,12 @@ title Mediador Pattern
 class Sensor {
   + id: string
   + constructor(id: string)
-  + sendMessage(receiver: IoTDevice, message: string): void
-  + sendMeasurement(receiver: IoTDevice, data: any): void
-  + receiveMessage(sender: IoTDevice, message: string): void
-  + receiveMeasurement(sender: IoTDevice, data: any): void
 }
 
 class Actuator {
   + id: string
   + constructor(id: string)
-  + sendMessage(receiver: IoTDevice, message: string): void
-  + sendMeasurement(receiver: IoTDevice, data: any): void
-  + receiveMessage(sender: IoTDevice, message: string): void
-  + receiveMeasurement(sender: IoTDevice, data: any): void
+  + receiveControlSignal(sender: IoTDevice, signal: string): void 
 }
 
 abstract class IoTDevice {

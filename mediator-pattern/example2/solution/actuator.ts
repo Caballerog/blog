@@ -10,4 +10,4 @@ export class Actuator extends IoTDevice {
     receiveControlSignal(senderId: string, signal: string): void {
       this.mediator.receiveControlSignal(this, senderId, signal);
     }
-  }
+}
