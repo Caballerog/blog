@@ -1,0 +1,63 @@
+
+@startuml
+skinparam titleBorderRoundCorner 15
+skinparam titleBorderThickness 2
+skinparam titleBorderColor blue
+
+
+header
+<font color=red>Warning:</font>
+Educational Purposes
+endheader
+
+center footer Carlos Caballero ([[https://www.carloscaballero.io https://www.carloscaballero.io]])
+
+
+title Flyweight Pattern - Problem
+
+package Domain {
+
+    class Player {
+        - name: string
+        - position: Position
+        - team: Team
+        - stats: Stats
+        + Player(name: string, position: Position, team: Team, stats: Stats)
+        + displayInfo(): void
+    }
+
+    class Position {
+        + name: string
+        + role: string
+    }
+
+    class Team {
+        + name: string
+        + coach: string
+    }
+
+    class Stats {
+        + goals: number
+        + assists: number
+        + matches: number
+    }
+
+
+    
+}
+
+class SportsSimulator {
+    - players: Player[]
+    + addPlayer(name: string, position: Position, team: Team, stats: Stats): void
+    + displayPlayers(): void
+}
+
+Player o--  Position : has
+Player  o-- Team : belongs to
+Player  o--  Stats : has
+SportsSimulator o-- Player
+
+
+
+
+@enduml

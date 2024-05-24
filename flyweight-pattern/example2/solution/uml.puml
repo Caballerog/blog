@@ -1,0 +1,108 @@
+
+@startuml
+skinparam titleBorderRoundCorner 15
+skinparam titleBorderThickness 2
+skinparam titleBorderColor blue
+
+
+header
+<font color=red>Warning:</font>
+Educational Purposes
+endheader
+
+center footer Carlos Caballero ([[https://www.carloscaballero.io https://www.carloscaballero.io]])
+
+
+title Flyweight Pattern - Solution
+
+package Domain {
+    class Stats {
+        + goals: number
+        + assists: number
+        + matches: number
+    }
+
+    class Player {
+        - name: string
+        - positionFlyweight: PositionFlyweight
+        - teamFlyweight: TeamFlyweight
+        - stats: Stats
+        + Player(name: string, positionFlyweight: PositionFlyweight, teamFlyweight: TeamFlyweight, stats: Stats)
+        + displayInfo(): void
+    }
+
+    class Position {
+        + name: string
+        + role: string
+    }
+
+    class Team {
+        + name: string
+        + coach: string
+    }
+
+    interface Flyweight {
+        + display(extrinsicState: any): void
+    }
+
+    class PositionFlyweight {
+        - position: Position
+        + PositionFlyweight(position: Position)
+        + display(extrinsicState: any): void
+        + position(): Position
+    }
+
+    class TeamFlyweight {
+        - team: Team
+        + TeamFlyweight(team: Team)
+        + display(extrinsicState: any): void
+        + team(): Team
+    }
+
+}
+
+abstract class FlyweightFactory {
+    #flyweights: Map<string, Flyweight>
+    + {abstract} getFlyweight(key: string): Flyweight
+    + listFlyweights(): void
+}
+
+class PositionFlyweightFactory extends FlyweightFactory {
+    - flyweights: Map<string, PositionFlyweight> 
+    + getFlyweight(position: Position): PositionFlyweight
+}
+
+class TeamFlyweightFactory extends FlyweightFactory {
+    - flyweights: Map<string, TeamFlyweight>
+    + getFlyweight(team: Team): TeamFlyweight
+}
+
+
+class SportsSimulator {
+    - players: Player[]
+    - positionFactory: PositionFlyweightFactory
+    - teamFactory: TeamFlyweightFactory
+    + addPlayer(name: string, position: Position, team: Team, stats: Stats): void
+    + displayPlayers(): void
+}
+
+
+Flyweight  <--o  FlyweightFactory : includes
+ 
+
+PositionFlyweight o-- Position : includes
+TeamFlyweight o-- Team : includes
+
+Player o--  PositionFlyweight : has
+Player  o-- TeamFlyweight : belongs to
+Player  o--  Stats : has
+
+PositionFlyweight ..|> Flyweight 
+TeamFlyweight ..|> Flyweight 
+
+
+PositionFlyweightFactory <-- SportsSimulator
+TeamFlyweightFactory <-- SportsSimulator
+
+
+@enduml

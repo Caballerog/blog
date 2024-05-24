@@ -1,0 +1,44 @@
+@startuml
+
+
+skinparam titleBorderRoundCorner 15
+skinparam titleBorderThickness 2
+skinparam titleBorderColor blue
+
+
+header
+<font color=red>Warning:</font>
+Educational Purposes
+endheader
+
+center footer Carlos Caballero ([[https://www.carloscaballero.io https://www.carloscaballero.io]])
+
+
+title Flyweight Pattern
+
+interface Flyweight {
+    + operation(extrinsicState: any): void
+}
+
+class ConcreteFlyweight  {
+    + operation(extrinsicState: any): void
+}
+
+class UnsharedConcreteFlyweight  {
+    + operation(extrinsicState: any): void
+}
+
+class FlyweightFactory {
+    - flyweights: Map<string, Flyweight> 
+    + getFlyweight(key: string): Flyweight
+    + listFlyweights(): void
+}
+
+Flyweight <|.. ConcreteFlyweight
+Flyweight <|.. UnsharedConcreteFlyweight
+FlyweightFactory o-> Flyweight : "<<create>> & <<resuse>>"
+Client --> FlyweightFactory
+Client -> Flyweight
+
+
+@enduml
