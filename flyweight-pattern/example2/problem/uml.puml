@@ -52,9 +52,9 @@ class SportsSimulator {
     + displayPlayers(): void
 }
 
-Player o--  Position : has
-Player  o-- Team : belongs to
-Player  o--  Stats : has
+Player *--  Position : has
+Player  *-- Team : belongs to
+Player  *--  Stats : has
 SportsSimulator o-- Player
 
 

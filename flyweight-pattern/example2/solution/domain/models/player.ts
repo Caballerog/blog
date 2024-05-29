@@ -1,6 +1,6 @@
-import { PositionFlyweight } from "../position-flyweight";
+import { PositionFlyweight } from "../../position-flyweight";
 import { Stats } from "./stats";
-import { TeamFlyweight } from "../team-flyweight";
+import { TeamFlyweight } from "../../team-flyweight";
 
 export class Player {
     private name: string;

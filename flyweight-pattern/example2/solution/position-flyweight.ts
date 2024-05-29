@@ -1,4 +1,4 @@
-import { Position, Team } from "./domain";
+import { Position, Team } from "./domain/models";
 
 import { Flyweight } from "./flyweight";
 

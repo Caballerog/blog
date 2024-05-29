@@ -1,5 +1,5 @@
 import { Flyweight } from "./flyweight";
-import { Team } from "./domain";
+import { Team } from "./domain/models";
 
 // Concrete Flyweights
 export class TeamFlyweight implements Flyweight {
