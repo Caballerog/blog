@@ -1,5 +1,5 @@
 import { FlyweightFactory } from "./flyweight.factory";
-import { Position } from "./domain/models";
+import { Position } from "./models";
 import { PositionFlyweight } from "./position-flyweight";
 
 export class PositionFlyweightFactory extends FlyweightFactory<Position> {

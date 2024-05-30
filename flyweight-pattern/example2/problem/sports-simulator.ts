@@ -1,5 +1,5 @@
-import { IPosition, IStats, ITeam } from "./domain/interfaces";
-import { Player, Position, Stats, Team } from "./domain/models";
+import { IPosition, IStats, ITeam } from "./interfaces";
+import { Player, Position, Stats, Team } from "./models";
 
 export class SportsSimulator {
     private players: Player[] = [];

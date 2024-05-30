@@ -1,6 +1,5 @@
-import { Position, Team } from "./domain/models";
-
 import { Flyweight } from "./flyweight";
+import { Position } from "./models";
 
 // Concrete Flyweights
 export class PositionFlyweight implements Flyweight {

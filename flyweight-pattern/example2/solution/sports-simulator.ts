@@ -1,5 +1,5 @@
-import { IPosition, IStats, ITeam } from "./domain/interfaces";
-import { Player, Stats } from "./domain/models";
+import { IPosition, IStats, ITeam } from "./interfaces";
+import { Player, Stats } from "./models";
 
 import { PositionFlyweightFactory } from "./position-flyweight.factory";
 import { TeamFlyweightFactory } from "./team-flyweight.factory";

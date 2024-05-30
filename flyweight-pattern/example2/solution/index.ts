@@ -1,4 +1,4 @@
-import { IPosition, IStats, ITeam } from "./domain/interfaces";
+import { IPosition, IStats, ITeam } from "./interfaces";
 
 import { SportsSimulator } from "./sports-simulator";
 

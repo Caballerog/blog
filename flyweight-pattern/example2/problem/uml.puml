@@ -15,8 +15,9 @@ center footer Carlos Caballero ([[https://www.carloscaballero.io https://www.car
 
 title Flyweight Pattern - Problem
 
-package Domain {
 
+
+ package models {
     class Player {
         - name: string
         - position: Position
@@ -42,20 +43,36 @@ package Domain {
         + matches: number
     }
 
-
+    }
+    package interfaces{
+        interface IPosition {
+            + name: string
+            + role: string
+        }
+        interface ITeam {
+            + name: string
+            + coach: string
+        }
+        interface IStats {
+            + goals: number
+            + assists: number
+            + matches: number
+        }
+    }
     
-}
+
 
 class SportsSimulator {
     - players: Player[]
-    + addPlayer(name: string, position: Position, team: Team, stats: Stats): void
+    + addPlayer(name: string, position: IPosition, team: ITeam, stats: IStats): void
     + displayPlayers(): void
 }
 
 Player *--  Position : has
 Player  *-- Team : belongs to
 Player  *--  Stats : has
-SportsSimulator o-- Player
+SportsSimulator o-- Player : "<<contains and create>>"
+SportsSimulator ..> interfaces: "<<use>>"
 
 
 

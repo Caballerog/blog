@@ -1,5 +1,5 @@
 import { FlyweightFactory } from "./flyweight.factory";
-import { Team } from "./domain/models";
+import { Team } from "./models";
 import { TeamFlyweight } from "./team-flyweight";
 
 export class TeamFlyweightFactory extends FlyweightFactory<Team> {

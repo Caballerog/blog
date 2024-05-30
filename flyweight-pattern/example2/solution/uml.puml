@@ -15,7 +15,9 @@ center footer Carlos Caballero ([[https://www.carloscaballero.io https://www.car
 
 title Flyweight Pattern - Solution
 
-package Domain {
+
+
+    package models {
     class Stats {
         + goals: number
         + assists: number
@@ -41,6 +43,8 @@ package Domain {
         + coach: string
     }
 
+    
+
     interface Flyweight {
         + display(extrinsicState: any): void
     }
@@ -58,8 +62,25 @@ package Domain {
         + display(extrinsicState: any): void
         + team(): Team
     }
+    }
 
-}
+     package interfaces{
+        interface IPosition {
+            + name: string
+            + role: string
+        }
+        interface ITeam {
+            + name: string
+            + coach: string
+        }
+        interface IStats {
+            + goals: number
+            + assists: number
+            + matches: number
+        }
+    }
+
+
 
 abstract class FlyweightFactory {
     #flyweights: Map<string, Flyweight>
@@ -82,7 +103,7 @@ class SportsSimulator {
     - players: Player[]
     - positionFactory: PositionFlyweightFactory
     - teamFactory: TeamFlyweightFactory
-    + addPlayer(name: string, position: Position, team: Team, stats: Stats): void
+    + addPlayer(name: string, position: IPosition, team: ITeam, IStats: Stats): void
     + displayPlayers(): void
 }
 
@@ -90,12 +111,12 @@ class SportsSimulator {
 Flyweight  <--o  FlyweightFactory : includes
  
 
-PositionFlyweight o-- Position : includes
-TeamFlyweight o-- Team : includes
+PositionFlyweight *-- Position : includes
+TeamFlyweight *-- Team : includes
 
 Player o--  PositionFlyweight : has
 Player  o-- TeamFlyweight : belongs to
-Player  o--  Stats : has
+Player  *--  Stats : has
 
 PositionFlyweight ..|> Flyweight 
 TeamFlyweight ..|> Flyweight 
@@ -103,6 +124,10 @@ TeamFlyweight ..|> Flyweight
 
 PositionFlyweightFactory <-- SportsSimulator
 TeamFlyweightFactory <-- SportsSimulator
+
+Player --o SportsSimulator : "<<contains and create>>"
+interfaces <.. SportsSimulator : "<<use>>"
+
 
 
 @enduml
