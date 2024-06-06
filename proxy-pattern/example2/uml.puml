@@ -1,0 +1,86 @@
+@startuml
+
+
+skinparam titleBorderRoundCorner 15
+skinparam titleBorderThickness 2
+skinparam titleBorderColor blue
+
+
+header
+<font color=red>Warning:</font>
+Educational Purposes
+endheader
+
+center footer Carlos Caballero ([[https://www.carloscaballero.io https://www.carloscaballero.io]])
+
+
+title Proxy Pattern
+
+interface Subject {
+    +operation(): void
+}
+
+interface SubjectCache {
+    +request(resource: string): Promise<string>
+}
+
+class RealSubject  {
+    +operation(): void
+}
+class RealSubjectCache {
+    +request(resource: string): Promise<string>
+}
+
+package Proxies {
+    class AccessProxy {
+        -realSubject: RealSubject
+        -userRole: string
+        +AccessProxy(realSubject: RealSubject, userRole: string)
+        +operation(): void
+        -checkAccess(): boolean
+    }
+    class CacheProxy {
+        -realSubjectCache: RealSubjectCache
+        -cache: Map<string, string>
+        +CacheProxy(realSubjectCache: RealSubjectCache)
+        +request(resource: string): Promise<string>
+    }
+    class LazyProxy {
+        -realSubject: RealSubject
+        -isLoaded: boolean
+        +LazyProxy(realSubject: RealSubject)
+        +operation(): void
+    }
+    class LogginProxy {
+        -realSubject: RealSubject
+        +LogginProxy(realSubject: RealSubject)
+        +operation(): void
+    }
+    class RemoteProxy {
+        -realSubject: RealSubject
+        +RemoteProxy(realSubject: RealSubject)
+        +operation(): void
+    
+    }
+}
+
+Subject <|.. RealSubject
+SubjectCache <|.. RealSubjectCache
+
+AccessProxy ..|> Subject
+AccessProxy o-- RealSubject
+CacheProxy o-- RealSubjectCache
+CacheProxy ..|> SubjectCache
+LazyProxy o-- RealSubject
+LazyProxy ..|> Subject
+LogginProxy o-- RealSubject
+LogginProxy ..|> Subject
+RemoteProxy o-- RealSubject
+RemoteProxy ..|> Subject
+
+
+Client .> Proxies : "<<use>>"
+
+
+
+@enduml
