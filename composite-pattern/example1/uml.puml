@@ -1,0 +1,39 @@
+@startuml
+left to right direction
+skinparam titleBorderRoundCorner 15
+skinparam titleBorderThickness 2
+skinparam titleBorderColor blue
+
+
+header
+<font color=red>Warning:</font>
+Educational Purposes
+endheader
+
+center footer Carlos Caballero ([[https://www.carloscaballero.io https://www.carloscaballero.io]])
+
+
+title Composite Pattern
+
+interface Component {
+    + operation(): void
+}
+
+class Leaf {
+    + operation(): void
+}
+
+class Composite {
+    - children: Component[]
+    + addChild(child: Component): void
+    + removeChild(child: Component): void
+    + operation(): void
+}
+
+Component <|.. Leaf
+Component <|.. Composite
+Composite o-- Component
+
+
+
+@enduml

@@ -1,0 +1,44 @@
+
+@startuml
+left to right direction
+
+skinparam titleBorderRoundCorner 15
+skinparam titleBorderThickness 2
+skinparam titleBorderColor blue
+
+
+header
+<font color=red>Warning:</font>
+Educational Purposes
+endheader
+
+center footer Carlos Caballero ([[https://www.carloscaballero.io https://www.carloscaballero.io]])
+
+
+title Composite Pattern
+
+
+interface RecipeComponent {
+    + showDetails(): string
+}
+
+class Ingredient  {
+    - name: string
+    - amount: string
+    + showDetails(): string
+}
+
+class Recipe  {
+    - name: string
+    - components: RecipeComponent[]
+    + addComponent(component: RecipeComponent): void
+    + showDetails(): string
+}
+
+RecipeComponent <|.. Ingredient
+RecipeComponent <|.. Recipe
+Recipe *-- RecipeComponent : contains
+
+
+
+@enduml
