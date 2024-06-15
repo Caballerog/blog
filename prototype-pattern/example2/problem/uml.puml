@@ -1,0 +1,35 @@
+
+@startuml
+skinparam titleBorderRoundCorner 15
+skinparam titleBorderThickness 2
+skinparam titleBorderColor blue
+
+
+header
+<font color=red>Warning:</font>
+Educational Purposes
+endheader
+
+center footer Carlos Caballero ([[https://www.carloscaballero.io https://www.carloscaballero.io]])
+
+
+title Prototype Pattern
+
+class VirtualPet {
+    + name: string;
+    + color: string;
+    + abilities: string[];
+    + energyLevel: number = 0;
+
+    + constructor(name: string, color: string, abilities: string[])
+    - calculateEnergy(milliseconds: number): void
+    + displayInfo(): string
+}
+
+
+class Client { }
+
+Client .> VirtualPet : "<<use>>"
+
+
+@enduml

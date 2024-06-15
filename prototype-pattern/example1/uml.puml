@@ -1,0 +1,42 @@
+@startuml
+
+skinparam titleBorderRoundCorner 15
+skinparam titleBorderThickness 2
+skinparam titleBorderColor blue
+
+
+header
+<font color=red>Warning:</font>
+Educational Purposes
+endheader
+
+center footer Carlos Caballero ([[https://www.carloscaballero.io https://www.carloscaballero.io]])
+
+
+title Prototype Pattern
+
+interface Prototype {
+    + operation(): void
+    + clone(): Prototype
+}
+
+class ConcretePrototype1 {
+    + operation(): void
+    + clone(): Prototype
+}
+
+class ConcretePrototype2 {
+    + operation(): void
+    + clone(): Prototype
+}
+
+class Client {
+
+}
+
+Prototype <|.. ConcretePrototype1
+Prototype <|.. ConcretePrototype2
+Client .> Prototype: "<<use>>"
+
+
+@enduml

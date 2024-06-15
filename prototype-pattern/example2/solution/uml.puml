@@ -1,0 +1,41 @@
+
+@startuml
+skinparam titleBorderRoundCorner 15
+skinparam titleBorderThickness 2
+skinparam titleBorderColor blue
+
+
+header
+<font color=red>Warning:</font>
+Educational Purposes
+endheader
+
+center footer Carlos Caballero ([[https://www.carloscaballero.io https://www.carloscaballero.io]])
+
+
+title Prototype Pattern
+
+interface Cloneable {
+    + clone(): Cloneable
+}
+
+class VirtualPet implements Cloneable{
+    + name: string;
+    + color: string;
+    + abilities: string[];
+    + energyLevel: number = 0;
+
+    + constructor(name: string, color: string, abilities: string[])
+    - calculateEnergy(milliseconds: number): void
+    + displayInfo(): string
+    + clone(): VirtualPet
+}
+
+
+class Client { }
+
+Client .> VirtualPet : "<<use>>"
+
+
+
+@enduml
